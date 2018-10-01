@@ -18,7 +18,6 @@ class CreateRoleUserTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('role_id')->unsigned();
             $table->timestamps();
-            $table->unique('user_id', 'role_id');
         });
 
         Schema::table('role_user', function ($table) {
@@ -34,8 +33,11 @@ class CreateRoleUserTable extends Migration
      */
     public function down()
     {
-        $table->dropForeign(['role_id']);
-        $table->dropForeign(['user_id']);
+        Schema::table('role_user', function ($table) {
+            $table->dropForeign(['role_id']);
+            $table->dropForeign(['user_id']);
+        });
+
         Schema::dropIfExists('role_user');
     }
 }
