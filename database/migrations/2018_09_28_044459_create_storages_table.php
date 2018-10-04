@@ -32,8 +32,11 @@ class CreateStoragesTable extends Migration
      */
     public function down()
     {
-        $table->dropForeign(['post_id']);
-        $table->dropForeign(['user_id']);
+        Schema::table('storages', function ($table) {
+            $table->dropForeign(['post_id']);
+            $table->dropForeign(['user_id']);
+        });
+
         Schema::dropIfExists('storages');
     }
 }
