@@ -22,5 +22,19 @@ return [
     'Logout' => 'Đăng xuất',
     'Title-Admin' => 'Quản lí tin tức',
     'Title-Login' => 'Đăng nhập',
-    
+    'Error-Login' => 'Tên đăng nhập hoặc mật khẩu không tồn tại',
+    'Show list posts' => 'Hiển thị danh sách tin tức',
+    'ID' => 'ID',
+    'Title' => 'Tiêu đề',
+    'Slug' => 'Slug',
+    'Body' => 'Nội dung',
+    'Image' => 'Ảnh',
+    'Published' => 'Xuất bản',
+    'User' => 'Người viết',
+    'Vote' => 'Bình chọn',
+    'View' => 'Lượt xem',
+    'View-Crud' => 'Xem',
+    'Edit-Crud' => 'Chỉnh sửa',
+    'Delete-Crud' => 'Xóa',
+
 ];

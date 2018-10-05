@@ -22,5 +22,19 @@ return [
     'Logout' => 'Logout',
     'Title-Admin' => 'News Management',
     'Title-Login' => 'Login',
-    
+    'Error-Login' => 'Email or Password don\'t exist',
+    'Show list posts' => 'Show all posts',
+    'ID' => 'ID',
+    'Title' => 'Title',
+    'Slug' => 'Slug',
+    'Body' => 'Body',
+    'Image' => 'Image',
+    'Published' => 'Published',
+    'User' => 'Created by',
+    'Vote' => 'Vote',
+    'View' => 'View',
+    'View-Crud' => 'View',
+    'Edit-Crud' => 'Edit',
+    'Delete-Crud' => 'Delete',
+
 ];

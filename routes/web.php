@@ -19,7 +19,8 @@ Route::get('logout', 'Auth\LoginController@logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => ['auth', 'admin']], function () {
+    Route::get('manager/posts/read-data', 'admin\PostController@readData');
     Route::resource('admin', 'admin\AdminController');
-    Route::resource('manager/posts', 'admin\PostController');
+    Route::get('manager/posts','admin\PostController@index')->name('posts.index');
 });
