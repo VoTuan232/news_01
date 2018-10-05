@@ -26,6 +26,12 @@
                     <span class="login100-form-title">
                     {{ trans('language.Member Login') }}
                     </span>
+                    @if (count($errors) >0 )
+                        <div class="alert alert-success">
+                            {{ $errors->first('email') }}
+                            {{ $errors->first('password') }}
+                        </div>
+                    @endif
                     <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
                         {{ Form::email('email', null, ['class' => 'input100', 'placeholder' => trans('language.Email')]) }}
                         <span class="focus-input100"></span>

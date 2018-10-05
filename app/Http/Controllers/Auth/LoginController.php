@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Config;
+use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
@@ -58,5 +59,12 @@ class LoginController extends Controller
         $request->session()->regenerate();
 
         return redirect($this->redirectAfterLogout);
+    }
+
+    protected function sendFailedLoginResponse(Request $request)
+    {
+        throw ValidationException::withMessages([
+            $this->username() => [ trans('language.Error-Login') ],
+        ]);
     }
 }
