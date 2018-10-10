@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Auth;
+use Config;
 
 class CheckAdmin
 {
@@ -16,7 +17,7 @@ class CheckAdmin
      */
     public function handle($request, Closure $next)
     {
-        if ( Auth::check() && Auth::user()->roles->count() > 0 )
+        if ( Auth::check() && Auth::user()->roles->count() > Config::get('social.zero') )
         {
             return $next($request);
         }

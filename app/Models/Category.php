@@ -15,7 +15,7 @@ class Category extends Model
         return $this->belongsToMany('App\Models\Post');
     }
 
-    pubic function parent()
+    public function parent()
     {
         return $this->belongsTo('App\Models\Category', 'parent_id');
     }
