@@ -27,6 +27,7 @@
     "bower-admin": "https://github.com/VoTuan232/bower-admin.git",
     "login": "https://github.com/VoTuan232/login.git",
     "jquery": "https://github.com/jquery/jquery-dist.git#^3.3.1",
-    "admin-layout": "https://github.com/VoTuan232/admin-layout.git"
+    "admin-layout": "https://github.com/VoTuan232/admin-layout.git",
+    "client-news": "https://github.com/VoTuan232/client-news.git"
   }
 }

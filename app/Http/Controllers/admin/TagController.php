@@ -35,7 +35,7 @@ class TagController extends Controller
             $tag = Tag::create($request->all());
 
             return response()->json([
-                'message' => trans('language.Create-Tag'),
+                'message' => trans('language.create-tag'),
                 'class_name'  => 'alert-success',
                 'tag' => $tag,
             ]);
