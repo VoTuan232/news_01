@@ -53,7 +53,13 @@ class CategoriesTableSeeder extends Seeder
         DB::table('categories')->insert([
             'id'  => '8',
             'name' => 'Ca nhạc',
+            'parent_id' => '2',
+        ]);
+
+        DB::table('categories')->insert([
+            'id'  => '9',
+            'name' => 'Điện thoại',
             'parent_id' => '4',
-         ]);
+        ]);
     }
 }
