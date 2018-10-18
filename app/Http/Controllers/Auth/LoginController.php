@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Config;
 use Illuminate\Validation\ValidationException;
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -63,8 +64,21 @@ class LoginController extends Controller
 
     protected function sendFailedLoginResponse(Request $request)
     {
-        throw ValidationException::withMessages([
-            $this->username() => [ trans('language.Error-Login') ],
-        ]);
+        if (!User::where('email', $request->email)->first()) {
+            
+            return redirect()->back()
+                ->withInput($request->only($this->username(), 'remember'))
+                ->withErrors([
+                    $this->username() => [trans('language.unvalid-account')],
+                ]);
+        }
+        if (!User::where('email', $request->email)->where('password', bcrypt($request->password))->first()) {
+            
+            return redirect()->back()
+                ->withInput($request->only($this->username(), 'remember'))
+                ->withErrors([
+                    'password' => [trans('language.unvalid-password')],
+                ]);
+        }
     }
 }

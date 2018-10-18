@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>{{ trans('language.title-login')}}</title>
+        <title></title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" type="image/png" href="{{ asset('bower_components/login/images/icons/favicon.ico') }}"/>
@@ -20,13 +20,20 @@
                     <div class="login100-pic js-tilt" data-tilt>
                         <img src="{{ \Storage::disk('my-disk')->url('/img-01.png') }}" alt="IMG">
                     </div>
-                    {!! Form::open(['route' =>'login', 'class' => 'login100-form validate-form', 'method' => 'POST']) !!}
+                    {!! Form::open(['route' =>'register', 'class' => 'login100-form validate-form', 'method' => 'POST']) !!}
                     {{ csrf_field() }}
                     <span class="login100-form-title">
-                    {{ trans('language.login') }}
+                    {{ trans('language.register') }}
                     </span>
                     {{ $errors->first('email') }}
                     {{ $errors->first('password') }}
+                    <div class="wrap-input100 validate-input" data-validate = "Username is requried">
+                        {{ Form::text('name', old('email'), ['class' => 'input100', 'placeholder' => trans('language.username')]) }}
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </span>
+                    </div>
                     <div class="wrap-input100 validate-input" data-validate = "{{ trans('language.required-email') }} ex@abc.xyz">
                         {{ Form::email('email', old('email'), ['class' => 'input100', 'placeholder' => trans('language.email')]) }}
                         <span class="focus-input100"></span>
@@ -34,15 +41,22 @@
                         <i class="fa fa-envelope" aria-hidden="true"></i>
                         </span>
                     </div>
-                    <div class="wrap-input100 validate-input" data-validate = "{{ trans('language.required-password') }}">
+                    <div class="wrap-input100 validate-input" data-validate = {{ trans('language.requied-password') }}>
                         {{ Form::password('password', ['class' => 'input100', 'placeholder' => trans('language.password')]) }}
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                         <i class="fa fa-lock" aria-hidden="true"></i>
                         </span>
                     </div>
+                    <div class="wrap-input100 validate-input" data-validate = {{ trans('language.required-password-confirmed') }}>
+                        {{ Form::password('password_confirmation', ['class' => 'input100', 'placeholder' => trans('language.password-confirmed'), 'id' => 'password-confirm']) }}
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                        <i class="fa fa-lock" aria-hidden="true"></i>
+                        </span>
+                    </div>
                     <div class="form-group">
-                        <div class="col-md-8 col-md-offset-4">
+                        <div class="col-md-6 col-md-offset-4">
                             <div class="checkbox">
                                 <label>
                                     {!! Form::checkbox('remember', null, old('remember') ? true : '', ['class' => 'checkbox', 'id' => 'defaultLoginFormRemember']) !!}
@@ -52,20 +66,12 @@
                         </div>
                     </div>
                     <div class="container-login100-form-btn">
-                        {{ Form::submit(trans('language.login'), ['class' => 'login100-form-btn']) }}
+                        {{ Form::submit(trans('language.register'), ['class' => 'login100-form-btn']) }}
                     </div>
                     <div class="text-center p-t-12">
-                        <span class="txt1">
-                        {{ trans('language.forgot') }}
                         </span>
                         <a class="txt2" href="#">
-                        {{ trans('language.user-password') }}
-                        </a>
-                    </div>
-                    <div class="text-center p-t-136">
-                        <a class="txt2" href="{{ route('register') }}">
-                        {{ trans('language.create-account') }}
-                        <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                        {{ trans('language.question-exist-account') }}
                         </a>
                     </div>
                     {!! Form::close() !!}
@@ -77,7 +83,11 @@
         <script src="{{ asset('bower_components/login/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('bower_components/login/vendor/select2/select2.min.js') }}"></script>
         <script src="{{ asset('bower_components/login/vendor/tilt/tilt.jquery.min.js') }}"></script>
-        @include('auth.login_js')
+        <script >
+            $('.js-tilt').tilt({
+               scale: 1.1
+            })
+        </script>
         <script src="{{ asset('bower_components/login/js/main.js') }}"></script>
     </body>
 </html>

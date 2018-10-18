@@ -27,13 +27,13 @@
                                         <th></th>
                                     </tr>
                                 </thead>
-                                <tbody id="tag-info">
+                                <tbody class="tag-info">
                                     @foreach ($tags as $tag)
                                     <tr id="{{ $tag->id }}">
                                         <th>{{ $tag->id }}</th>
                                         <td><a href="#">{{ $tag->name }}</a></td>
                                         <td>
-                                            <a href="#" class="btn btn-info btn-xs" id="view">{{ trans('language.View-Crud') }}</a>
+                                            <a href="#" class="btn btn-info btn-xs" id="view">{{ trans('language.view-crud') }}</a>
                                             <a href="#" class="btn btn-success btn-xs" id="edit" data-id="{{ $tag->id }}">{{ trans('language.edit-crud') }}</a>
                                             <a href="#" class="btn btn-danger btn-xs" id="delete" data-id="{{ $tag->id }}">{{ trans('language.delete-crud') }}</a>
                                         </td>
@@ -45,7 +45,7 @@
                         <div class="col-md-4 pull-right">
                             <div class="well">
                                 {!! Form::open(['route' => 'tags.store', 'method' => 'POST', 'id' => 'frm-create']) !!}
-                                <h2>{{ trasn('language.new-tag') }}</h2>
+                                <h2>{{ trans('language.new-tag') }}</h2>
                                 {{ Form::label('name', 'Name:') }}
                                 {{ Form::text('name', null, ['class' => 'form-control']) }}
                                 {{ Form::submit(trans('language.create-new-tag'), ['class' => 'btn btn-primary btn-block btn-h1-spacing']) }}

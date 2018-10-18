@@ -13,25 +13,25 @@
         var id = document.getElementById("id-update").value;
         var name = document.getElementById("name-update").value;
         
-        $.post('{{ URL::to("manager/tags/update") }}',{id:id, name: name}, function(data) {
+        $.post("{{ URL::to('manager/tags/update') }}",{id:id, name: name}, function(data) {
 
             if(data.tag)
             {
-            var tr=$("<tr/>",{
+            var tr = $("<tr/>", {
                 id:data.tag.id
             });
-            tr.append($("<th/>",{
+            tr.append($("<th/>", {
                 text : data.tag.id
-            })).append($("<td/>",{
-                html : '<a href="#" class="">'+data.tag.name+'</a>'
+            })).append($("<td/>", {
+                html : '<a href="#" class="">' + data.tag.name + '</a>'
                  
-            })).append($("<td/>",{
-                html : '<a href="#" class="btn btn-info btn-xs" id="view" data-id="'+data.tag.id+'">View </a> ' + 
-                    '<a href="#" class="btn btn-success btn-xs" id="edit" data-id="'+data.tag.id+'">Edit </a> ' +
-                    '<a href="#" class="btn btn-danger btn-xs" id="delete" data-id="'+data.tag.id+'">Delete </a> ' 
+            })).append($("<td/>", {
+                html : '<a href="#" class="btn btn-info btn-xs" id="view" data-id="' + data.tag.id + '">{{ trans('language.view-crud') }}</a> ' + 
+                    '<a href="#" class="btn btn-success btn-xs" id="edit" data-id="' + data.tag.id + '">{{ trans('language.edit-crud') }}</a> ' +
+                    '<a href="#" class="btn btn-danger btn-xs" id="delete" data-id="' + data.tag.id + '">{{ trans('language.delete-crud') }}</a> ' 
              }))
 
-            $('#tag-info tr#'+data.tag.id).replaceWith(tr);
+            $('.tag-info tr#' + data.tag.id).replaceWith(tr);
             $('#editTag').modal('hide');
             $('#message').css('display', 'block');
             $('#message').html(data.message);
